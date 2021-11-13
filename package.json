@@ -11,7 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.5.3",
-    "libquery": "^1.0.2",
     "mcpe-ping": "^0.0.4"
   }
 }

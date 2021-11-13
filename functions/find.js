@@ -45,6 +45,4 @@ exports.serverSearch = function (msg, serverAmount, portType, portNumber)
             }, 3000);
         }
     }
-
-    msg.channel.send(`Pinged ${serverAmount} servers`);
 }
