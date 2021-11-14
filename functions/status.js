@@ -20,6 +20,8 @@ async function getAllPlayers(serverDB)
             }
         }, 1000);
     }
+
+    return players;
 }
 
 async function pingAll(serverDB)

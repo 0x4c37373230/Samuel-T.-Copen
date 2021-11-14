@@ -7,6 +7,7 @@ const {pingServer} = require("./functions/ping.js");
 const {serverSearch} = require("./functions/find.js");
 const {status} = require("./functions/status");
 const {sort} = require("./functions/sort");
+const {getPlayers} = require("./functions/players")
 
 client.on("ready", () =>
 {
@@ -35,6 +36,9 @@ client.on("message",  msg =>
                     break;
                 case "browse":
                     sort(msg, args[0], args[1]);
+                    break;
+                case "players":
+                    getPlayers(msg, args[0], args[1]);
                     break;
                 default:
                     msg.channel.send("No command specified, or command given doesn't exist.");
