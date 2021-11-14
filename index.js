@@ -3,11 +3,12 @@ const client = new Discord.Client();
 const config = require("./config.json");
 const commandPrefix = "c.";
 
-const {pingServer} = require("./functions/ping.js");
-const {serverSearch} = require("./functions/find.js");
+const {help} = require("./functions/help")
+const {pingServer} = require("./functions/ping");
+const {serverSearch} = require("./functions/find");
 const {status} = require("./functions/status");
 const {sort} = require("./functions/sort");
-const {getPlayers} = require("./functions/players")
+const {listServers} = require("./functions/list")
 
 client.on("ready", () =>
 {
@@ -25,6 +26,9 @@ client.on("message",  msg =>
         {
             switch (command)
             {
+                case "help":
+                    help(msg, commandPrefix)
+                    break;
                 case "ping":
                     pingServer(msg, args[0], args[1]);
                     break;
@@ -37,8 +41,8 @@ client.on("message",  msg =>
                 case "browse":
                     sort(msg, args[0], args[1]);
                     break;
-                case "players":
-                    getPlayers(msg, args[0], args[1]);
+                case "list":
+                    listServers(msg);
                     break;
                 default:
                     msg.channel.send("No command specified, or command given doesn't exist.");

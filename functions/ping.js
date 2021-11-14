@@ -1,7 +1,7 @@
 const mcpeping = require("mcpe-ping");
 const {MessageEmbed} = require("discord.js");
 
-const {addServer} = require("./database.js");
+const {addServer} = require("./database.old");
 
 exports.pingServer = function (msg, ip, port)
 {

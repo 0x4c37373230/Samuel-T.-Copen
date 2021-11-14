@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require("fs");
 const {MessageEmbed} = require("discord.js");
 const mcpeping = require("mcpe-ping");
 
@@ -9,10 +9,10 @@ async function getAllPlayers(serverDB)
 
     for (let i = 0; i < amount; i++)
     {
-        let ipToPing = serverDB.serverList[i].server.ip;
-        let portToPing = serverDB.serverList[i].server.port;
+        let ip = serverDB.serverList[i].server.ip;
+        let port = serverDB.serverList[i].server.port;
 
-        await mcpeping(ipToPing, portToPing, function (err, data)
+        await mcpeping(ip, port, function (err, data)
         {
             if (!err)
             {
@@ -20,7 +20,6 @@ async function getAllPlayers(serverDB)
             }
         }, 1000);
     }
-
     return players;
 }
 
@@ -31,10 +30,10 @@ async function pingAll(serverDB)
 
     for (let i = 0; i < amount; i++)
     {
-        let ipToPing = serverDB.serverList[i].server.ip;
-        let portToPing = serverDB.serverList[i].server.port;
+        let ip = serverDB.serverList[i].server.ip;
+        let port = serverDB.serverList[i].server.port;
 
-        await mcpeping(ipToPing, portToPing, function (err)
+        await mcpeping(ip, port, function (err)
         {
             if (!err)
             {
@@ -46,25 +45,29 @@ async function pingAll(serverDB)
     return onlineServers;
 }
 
-exports.status = async function (msg)
+exports.status = function (msg)
 {
-    fs.readFile('serverDB.json', 'utf8', function read(err, fileData)
+    const rStream = fs.createReadStream("serverDB.json").setEncoding("utf8");
+    let fileData = "";
+
+    rStream.on("data", function (chunk)
     {
-        if (!err)
-        {
-            msg.channel.send("Just a moment. Please stand by...");
+        fileData += chunk;
+    });
+    rStream.on("end", function ()
+    {
+        msg.channel.send("Just a moment. Please stand by...");
 
-            let database = JSON.parse(fileData);
-            let serverAmount = Object.keys(database.serverList).length
+        let database = JSON.parse(fileData);
+        let serverAmount = Object.keys(database.serverList).length
 
-            let statusEmbed = new MessageEmbed()
-                .setTitle("Sam T. Copen Status")
-                .setColor("#FF0000")
-                .addField("Total servers", `${serverAmount}`, false)
-                .addField("Online servers", pingAll(database), false)
-                .addField("Online players", getAllPlayers(database), false)
+        let statusEmbed = new MessageEmbed()
+            .setTitle("Sam T. Copen Status")
+            .setColor("#FF0000")
+            .addField("Total servers", `${serverAmount}`, false)
+            .addField("Online servers", pingAll(database), true)
+            .addField("Online players", getAllPlayers(database), true)
 
-            msg.channel.send(statusEmbed);
-        }
+        msg.channel.send(statusEmbed);
     });
 }
