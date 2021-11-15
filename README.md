@@ -9,3 +9,4 @@ A javascript bedrock port of the JE Copenheimer project; a discord bot designed 
 ### Dependencies
 - discord.js-v12
 - [mcpe-ping](https://github.com/falkirks/mcpe-ping)
+- node-os-utilities
