@@ -19,4 +19,4 @@ Download the code folder, run the command `npm install` inside to install all th
   "token": "your-token-goes-here"
 }
 ```
-Replace the 'your-token-goes-here' with your bot token and then open a command prompt and run `node index`. The bot should have started
+Replace the 'your-token-goes-here' with your bot token and then open a command prompt and run `node index`. The bot should start
