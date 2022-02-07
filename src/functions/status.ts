@@ -3,7 +3,16 @@ import fs = require("fs");
 import mcpeping = require("mcpe-ping");
 import {MessageEmbed, Message} from "discord.js";
 
-import {ServerInfo} from "./database";
+type ServerInfo = {
+    server: {
+        name: String,
+        ip: String,
+        port: number,
+        software: String,
+        version: String,
+        gamemode: String
+    }
+}
 
 function getAllPlayers(serverDB: {serverList:[ServerInfo]}): number
 {

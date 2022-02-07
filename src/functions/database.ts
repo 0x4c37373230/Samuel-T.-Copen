@@ -1,16 +1,5 @@
 import fs = require("fs");
 
-export type ServerInfo = {
-    server: {
-        name: String,
-        ip: String,
-        port: number,
-        software: String,
-        version: String,
-        gamemode: String
-    }
-}
-
 type BedrockServer = {
     Name: String,
     Ip: String,
@@ -28,26 +17,27 @@ export function addServer (serverInfo: BedrockServer)
         let amount = Object.keys(database.serverList).length;
         let ipExists = false;
 
-        for (let i = 0; i < amount; i++) {
+        for (let i = 0; i < amount; i++)
+        {
             let ipToCheck = database.serverList[i].server.ip;
-            if (ipToCheck === serverInfo.Ip) {
+
+            if (ipToCheck === serverInfo.Ip)
                 ipExists = true;
-            }
         }
 
-        if (!ipExists) {
-            database.serverList.push(
-                {
-                    server:
-                        {
-                            name: serverInfo.Name,
-                            ip: serverInfo.Ip,
-                            port: serverInfo.Port,
-                            software: serverInfo.Software,
-                            version: serverInfo.Version,
-                            gamemode: serverInfo.Gamemode
-                        }
-                });
+        if (!ipExists)
+        {
+            database.serverList.push({
+                server:
+                    {
+                        name: serverInfo.Name,
+                        ip: serverInfo.Ip,
+                        port: serverInfo.Port,
+                        software: serverInfo.Software,
+                        version: serverInfo.Version,
+                        gamemode: serverInfo.Gamemode
+                    }
+            });
         }
 
         let json = JSON.stringify(database);

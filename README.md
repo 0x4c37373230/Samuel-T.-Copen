@@ -1,9 +1,9 @@
 # Samuel-T.-Copen
 
-A typescript bedrock port of the JE Copenheimer project; a discord bot designed to scan the internet for MC servers and ping them to get information about them. Named after Samuel Theodore Cohen; inventor of the neutron bomb
+A typescript bedrock port of the JE Copenheimer project; a discord bot designed to scan the internet for MC servers and ping them to get information about them. Named after Samuel Theodore Cohen; inventor of the neutron bomb. Note that the server storing is inefficient as it's quite slow. This was just made as a POC and not intended for actual usage, feel free to improve it anyways
 
 **TODO**:
-- "Multithreading"
+- Worker threads
 - Reader Streams
 
 ### Dependencies

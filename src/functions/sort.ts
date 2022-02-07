@@ -23,9 +23,7 @@ export function sort(msg: Message, conditionType: String, conditionValue: String
                         let serverName = database.serverList[i].server.name;
 
                         if (serverName.search(conditionValue) > 0)
-                        {
                             nameEmbed.addField(`${serverName}-`, `${database.serverList[i].server.ip} : ${database.serverList[i].server.port}`, false)
-                        }
                     }
                     msg.channel.send(nameEmbed);
                     break;
@@ -39,12 +37,9 @@ export function sort(msg: Message, conditionType: String, conditionValue: String
                         let serverVersion = database.serverList[i].server.version;
 
                         if (serverVersion === conditionValue)
-                        {
                             versionEmbed.addField(`${database.serverList[i].server.name}`, `${database.serverList[i].server.ip} : ${database.serverList[i].server.port}`, false)
-                        }
                     }
                     msg.channel.send(versionEmbed);
-                    break;
             }
         }
     });

@@ -6,16 +6,14 @@ import {pingServer} from "./ping.js";
 
 function* octetGen()
 {
-    while (true) {
+    while (true)
         yield Math.floor(Math.random() * (255 + 1));
-    }
 }
 
 function* portGen()
 {
-    while (true) {
+    while (true)
         yield Math.floor(Math.random() * (65535 - 1 + 1)) + 1;
-    }
 }
 
 export function serverSearch(msg: Message, serverAmount: Number, portType: String, portNum: number)
@@ -35,7 +33,6 @@ export function serverSearch(msg: Message, serverAmount: Number, portType: Strin
                 break;
             case "s":
                 port = portNum;
-                break;
         }
 
         if (ip !== "127.0.0.1")
@@ -43,14 +40,13 @@ export function serverSearch(msg: Message, serverAmount: Number, portType: Strin
             mcpeping(ip, port, function (err: any)
             {
                 if (err)
-                {
                     msg.channel.send(`No server found at **${ip} : ${port}**`);
-                }
                 else
                 {
                     msg.channel.send(`A server was found at **${ip}:${port}**. Pinging now...`);
                     pingServer(msg, ip, Number(port));
                 }
+
             }, 3000);
         }
     }

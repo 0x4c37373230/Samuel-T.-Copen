@@ -1,3 +1,4 @@
+
 // @ts-ignore
 import mcpeping = require("mcpe-ping");
 import {MessageEmbed, Message} from "discord.js";
@@ -9,9 +10,7 @@ export function pingServer (msg: Message, ip: String, port: number)
     mcpeping(`${ip}`, port, function(err: any, data: any)
     {
         if (err)
-        {
             msg.channel.send(`**ERROR**: ${err.description}`);
-        }
         else
         {
             let serverInfo =
