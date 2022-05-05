@@ -9,6 +9,10 @@ type BedrockServer = {
     Gamemode: String
 }
 
+/**
+ * Adds server information to 'serverDB'.json
+ * @param serverInfo - contains the new server data
+ */
 export function addServer (serverInfo: BedrockServer)
 {
     fs.readFile("serverDB.json", "utf-8", function read(err, fileData)

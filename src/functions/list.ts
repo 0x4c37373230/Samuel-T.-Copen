@@ -1,6 +1,10 @@
 import fs = require("fs");
 import {MessageEmbed, Message} from "discord.js";
 
+/**
+ * Sends an embed containing the names of all the servers listed in 'serverDB.json'
+ * @param msg - is the context
+ */
 export function listServers(msg: Message)
 {
     fs.readFile('serverDB.json', 'utf8', function read(err, fileData)

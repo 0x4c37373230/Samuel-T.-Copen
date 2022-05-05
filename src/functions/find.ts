@@ -4,12 +4,18 @@ import {Message} from "discord.js";
 
 import {pingServer} from "./ping.js";
 
+/**
+ * Generates octets to "bruteforce" IPs
+ */
 function* octetGen()
 {
     while (true)
         yield Math.floor(Math.random() * (255 + 1));
 }
 
+/**
+ * Generates port numbers
+ */
 function* portGen()
 {
     while (true)
@@ -34,6 +40,12 @@ export function serverSearch(msg: Message, serverAmount: Number, portType: Strin
             case "s":
                 port = portNum;
         }
+
+        // TODO:
+        //  Add checks for special use reserved IP addresses
+        //  Implement non random IP "bruteforce" mode
+        //  Implement ranged IP search mode
+        //  Worker thread usage
 
         if (ip !== "127.0.0.1")
         {

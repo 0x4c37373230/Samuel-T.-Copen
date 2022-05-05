@@ -14,8 +14,14 @@ type ServerInfo = {
     }
 }
 
+/**
+ * Gets the total amount of players in all the servers listed in the database
+ * @param serverDB - is the parsed version of 'serverDB.json'
+ */
 function getAllPlayers(serverDB: {serverList:[ServerInfo]}): number
 {
+    // FIXME: This doesn't work properly yet. I know why (I think I do at least) but it's hard to explain
+
     let amount = Object.keys(serverDB.serverList).length;
     let players = 0;
 
@@ -35,8 +41,14 @@ function getAllPlayers(serverDB: {serverList:[ServerInfo]}): number
     return players;
 }
 
+/**
+ * Pings all the servers listed in the JSON to check the amount of online servers
+ * @param serverDB - is the parsed version of 'serverDB.json'
+ */
 function pingAll(serverDB: {serverList:[ServerInfo]}): number
 {
+    // FIXME: This doesn't work properly yet. I know why (I think I do at least) but it's hard to explain
+
     let amount = Object.keys(serverDB.serverList).length
     let onlineServers = 0;
 
@@ -57,6 +69,10 @@ function pingAll(serverDB: {serverList:[ServerInfo]}): number
     return onlineServers;
 }
 
+/**
+ * Sends an embed with the JSON status, online servers and full amount of players
+ * @param msg - is the "context"
+ */
 export function status(msg: Message)
 {
     fs.readFile('serverDB.json', 'utf8', function read(err, fileData)

@@ -1,6 +1,10 @@
 import osu = require("node-os-utils");
 import {Message, MessageEmbed} from "discord.js";
 
+/**
+ * Sends an embed containing the specs of the environment the bot is running on
+ * @param msg - is the context
+ */
 export function osInfo(msg: Message)
 {
     osu.cpu.usage().then(cpuPercentage =>

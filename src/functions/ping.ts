@@ -1,11 +1,16 @@
-
 // @ts-ignore
 import mcpeping = require("mcpe-ping");
 import {MessageEmbed, Message} from "discord.js";
 
 import {addServer} from "./database";
 
-export function pingServer (msg: Message, ip: String, port: number)
+/**
+ * Pings a server on a specific IP and port and sends an embed with its information. If the server is not in 'serverDB.json', it will be added
+ * @param msg - is the "context"
+ * @param ip - is the ip to be "scanned" for an MCBE server
+ * @param port - is the port in which the specified ip will be pinged, 19132 by default
+ */
+export function pingServer (msg: Message, ip: String, port: number = 19132)
 {
     mcpeping(`${ip}`, port, function(err: any, data: any)
     {
@@ -52,6 +57,7 @@ export function pingServer (msg: Message, ip: String, port: number)
                 infoEmbed.addField("Software", "Proxy", false);
                 serverInfo.Software = "Proxy";
             }
+
             addServer(serverInfo);
             msg.channel.send(infoEmbed);
         }

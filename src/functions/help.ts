@@ -1,5 +1,10 @@
 import {MessageEmbed, Message} from "discord.js";
 
+/**
+ * Sends an embed containing a list of all the bot commands and their basic usage
+ * @param msg - is the context
+ * @param commandPrefix - is the bot prefix
+ */
 export function help (msg: Message, commandPrefix: String)
 {
     let helpEmbed = new MessageEmbed()
