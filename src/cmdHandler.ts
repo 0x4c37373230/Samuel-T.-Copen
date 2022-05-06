@@ -29,13 +29,16 @@ export function cmdHandler(commandPrefix: string, msg: Message, command: string,
                 pingServer(msg, args[0], parseInt(args[1]));
             break;
         case "find":
-            serverSearch(msg, parseInt(args[0]), args[1], parseInt(args[2]));
+            if (args[1] === "random" || args[1] == "linear")
+                serverSearch(msg, parseInt(args[0]), args[1], args[2], parseInt(args[3]));
+            else
+                msg.channel.send("IP generation mode must be either 'random' or 'linear'")
             break;
         case "status":
             status(msg);
             break;
         case "browse":
-            if (args[0] === ("name" || "version"))
+            if (args[0] === "name" || args[0] == "version")
                 sort(msg, args[0], args[1]);
             else
                 msg.channel.send("No such criteria exists")
