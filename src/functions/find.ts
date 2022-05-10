@@ -3,26 +3,24 @@ import mcpeping = require("mcpe-ping");
 import {Message} from "discord.js";
 
 import {pingServer} from "./ping.js";
-import {ipGenerator, portGen} from "../ipTools";
+import {ipGenerator, portGenerator} from "../ipTools";
 
-export function serverSearch(msg: Message, serverAmount: Number, mode: "random" | "linear", portType: "r" | "s", portNum: number)
+export function serverSearch(msg: Message, serverAmount: Number, mode: "r" | "s" | "l", portType: "r" | "s" | "l", ipStr: string, portNum: number)
 {
-    let portGenerator = portGen();
-
     for (let loopCount = 0; loopCount < serverAmount; loopCount++)
     {
-        let ip = ipGenerator.generator(mode);
-        let port: number | void = 19132;
+        let ip: string;
+        let port: number;
 
-        switch (portType)
-        {
-            case "r":
-                port = portGenerator.next().value;
-                break;
-            default:
-                 if (!isNaN(portNum))
-                    port = portNum
-        }
+        if (ipStr === "SKIP")
+            ip = ipGenerator.generator(mode);
+        else
+            ip = ipGenerator.generator(mode, ipStr);
+
+        if (isNaN(portNum))
+            port = portGenerator.generator(portType);
+        else
+            port = portGenerator.generator(portType, portNum);
 
         // TODO:
         //  Implement ranged IP search mode

@@ -30,10 +30,10 @@ export function cmdHandler(commandPrefix: string, msg: Message, command: string,
                 pingServer(msg, args[0], parseInt(args[1]));
             break;
         case "find":
-            if ((args[1] === "random" || args[1] == "linear") && (args[2] === "r" || args[2] === "s"))
-                serverSearch(msg, parseInt(args[0]), args[1], args[2], parseInt(args[3]));
+            if ((args[1] === "r" || args[1] === "s" || args[1] == "l") && (args[2] === "r" || args[2] === "s" || args[2] === "l"))
+                serverSearch(msg, parseInt(args[0]), args[1], args[2], args[3], parseInt(args[4]));
             else
-                msg.channel.send("IP generation mode must be either 'random' or 'linear' and port generation mode must be either 'r' or 's'")
+                msg.channel.send("IP generation mode must be either 'random' or 'linear' and port generation mode must be either 'r', 'l' or 's'")
             break;
         case "status":
             status(msg);
