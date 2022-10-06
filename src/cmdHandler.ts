@@ -7,7 +7,6 @@ import {status} from "./functions/status";
 import {sort} from "./functions/sort";
 import {listServers} from "./functions/list";
 import {osInfo} from "./functions/os";
-import {testingStuff} from "./functions/testing";
 
 /**
  *
@@ -30,10 +29,10 @@ export function cmdHandler(commandPrefix: string, msg: Message, command: string,
                 pingServer(msg, args[0], parseInt(args[1]));
             break;
         case "find":
-            if ((args[1] === "r" || args[1] === "s" || args[1] == "l") && (args[2] === "r" || args[2] === "s" || args[2] === "l"))
+            if ((args[1] === "r" || args[1] === "s") && (args[2] === "r" || args[2] === "s" || args[2] === "l"))
                 serverSearch(msg, parseInt(args[0]), args[1], args[2], args[3], parseInt(args[4]));
             else
-                msg.channel.send("IP generation mode must be either 'random' or 'linear' and port generation mode must be either 'r', 'l' or 's'")
+                msg.channel.send("IP generation mode must be either 'random' or 'specific' and port generation mode must be either 'r', 'l' or 's'")
             break;
         case "status":
             status(msg);
@@ -49,9 +48,6 @@ export function cmdHandler(commandPrefix: string, msg: Message, command: string,
             break;
         case "os-info":
             osInfo(msg);
-            break;
-        case "test":
-            testingStuff();
             break;
         default:
             msg.channel.send("No command specified, or command given doesn't exist.");

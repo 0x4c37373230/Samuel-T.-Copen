@@ -5,7 +5,7 @@ import {Message} from "discord.js";
 import {pingServer} from "./ping.js";
 import {ipGenerator, portGenerator} from "../ipTools";
 
-export function serverSearch(msg: Message, serverAmount: Number, mode: "r" | "s" | "l", portType: "r" | "s" | "l", ipStr: string, portNum: number)
+export function serverSearch(msg: Message, serverAmount: Number, mode: "r" | "s" , portType: "r" | "s" | "l", ipStr: string, portNum: number)
 {
     for (let loopCount = 0; loopCount < serverAmount; loopCount++)
     {

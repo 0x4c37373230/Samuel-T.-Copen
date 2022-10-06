@@ -1,17 +1,9 @@
 import isReservedIP from "reserved-ip";
 
-type linearIP = {
-    o1: number,
-    o2: number,
-    o3: number,
-    o4: number
-}
-
 export class ipGenerator
 {
     static ip: string;
     static goodIp = false;
-    static currentLinearIp: linearIP = { o1: 0, o2: 0, o3: 0, o4: 0 }
     static octetGen = octetGen();
 
     /**
@@ -19,23 +11,12 @@ export class ipGenerator
      * @param mode - is the IP generation mode
      * @param newIP - can specify certain IP to search for servers in
      */
-    static assignIp(mode: "r" | "s" | "l", newIP?: string): void
+    static assignIp(mode: "r" | "s", newIP?: string): void
     {
         switch (mode)
         {
             case "r":
                 this.ip = `${this.octetGen.next().value}.${this.octetGen.next().value}.${this.octetGen.next().value}.${this.octetGen.next().value}`;
-                break;
-            case "l":
-                // FIXME: Fix the fuckery I wrote here so that it goes through every IP
-
-                this.currentLinearIp = {
-                    o1: this.currentLinearIp.o1 === 255 ? this.currentLinearIp.o1 = 0 : this.currentLinearIp.o1++,
-                    o2: this.currentLinearIp.o2 === 255 ? this.currentLinearIp.o2 = 0 : this.currentLinearIp.o2++,
-                    o3: this.currentLinearIp.o3 === 255 ? this.currentLinearIp.o3 = 0 : this.currentLinearIp.o3++,
-                    o4: this.currentLinearIp.o4 === 255 ? this.currentLinearIp.o4 = 0 : this.currentLinearIp.o4++
-                }
-                this.ip = `${this.currentLinearIp.o1}.${this.currentLinearIp.o2}.${this.currentLinearIp.o3}.${this.currentLinearIp.o4}`
                 break;
             default:
                 if (typeof newIP !== "undefined")
@@ -50,7 +31,7 @@ export class ipGenerator
      * @param mode - is the IP generation mode
      * @param newIP - can specify certain IP to search for servers in
      */
-    static generator(mode: "r" | "s" | "l", newIP?: string): string
+    static generator(mode: "r" | "s", newIP?: string): string
     {
         this.assignIp(mode, newIP)
 

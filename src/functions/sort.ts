@@ -10,7 +10,7 @@ import {MessageEmbed, Message} from "discord.js";
  */
 export function sort(msg: Message, conditionType: "name" | "version", conditionValue: String)
 {
-    // FIXME: This bot command straight up does not work and I have no idea why since it used to work properly
+    // FIXME: The name searching doesn't work
 
     fs.readFile('serverDB.json', 'utf8', function read(err, fileData)
     {
