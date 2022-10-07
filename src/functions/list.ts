@@ -13,12 +13,14 @@ export function listServers(msg: Message)
         {
             let database = JSON.parse(fileData);
             let amount = Object.keys(database.serverList).length;
-            let serverList = "\`\`\`diff\n+ ";
+            let serverList = "\`\`\`diff";
 
             for (let i = 0; i < amount; i++)
             {
-                let serverName = database.serverList[i].server.name;
-                serverList = serverList.concat(`${serverName}\n+ `)
+                let serverName = database.serverList[i]?.server.name;
+
+                if (typeof serverName !== "undefined")
+                    serverList = serverList.concat(`\n+ ${serverName}`)
             }
 
             let listEmbed = new MessageEmbed()

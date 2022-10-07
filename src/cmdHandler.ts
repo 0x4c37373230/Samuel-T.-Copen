@@ -7,6 +7,8 @@ import {status} from "./functions/status";
 import {sort} from "./functions/sort";
 import {listServers} from "./functions/list";
 import {osInfo} from "./functions/os";
+import {updateDB} from "./functions/update";
+import {removeServer} from "./functions/remove";
 
 /**
  *
@@ -48,6 +50,12 @@ export function cmdHandler(commandPrefix: string, msg: Message, command: string,
             break;
         case "os-info":
             osInfo(msg);
+            break;
+        case "update":
+            updateDB(msg);
+            break;
+        case "remove":
+            removeServer(msg, args[0]);
             break;
         default:
             msg.channel.send("No command specified, or command given doesn't exist.");

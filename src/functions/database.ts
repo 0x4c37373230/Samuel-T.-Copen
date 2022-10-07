@@ -23,7 +23,7 @@ export function addServer (serverInfo: BedrockServer)
 
         for (let i = 0; i < amount; i++)
         {
-            let ipToCheck = database.serverList[i].server.ip;
+            let ipToCheck = database.serverList[i]?.server.ip;
 
             if (ipToCheck === serverInfo.Ip)
                 ipExists = true;
@@ -44,8 +44,6 @@ export function addServer (serverInfo: BedrockServer)
             });
         }
 
-        let json = JSON.stringify(database);
-
-        fs.writeFileSync('serverDB.json', json, "utf-8");
+        fs.writeFileSync('serverDB.json', JSON.stringify(database), "utf-8");
     });
 }
