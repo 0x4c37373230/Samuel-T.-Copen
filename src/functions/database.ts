@@ -15,7 +15,7 @@ type BedrockServer = {
  */
 export function addServer (serverInfo: BedrockServer)
 {
-    fs.readFile("serverDB.json", "utf-8", function read(err, fileData)
+    fs.readFile("serverDB.json", "utf-8", (err, fileData) =>
     {
         let database = JSON.parse(fileData);
         let amount = Object.keys(database.serverList).length;

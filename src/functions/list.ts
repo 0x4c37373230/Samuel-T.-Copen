@@ -7,7 +7,7 @@ import {MessageEmbed, Message} from "discord.js";
  */
 export function listServers(msg: Message)
 {
-    fs.readFile('serverDB.json', 'utf8', function read(err, fileData)
+    fs.readFile('serverDB.json', 'utf8', (err, fileData) =>
     {
         if (!err)
         {

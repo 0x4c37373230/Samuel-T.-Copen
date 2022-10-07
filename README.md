@@ -13,10 +13,4 @@ A typescript bedrock port of the JE Copenheimer project; a discord bot designed 
 
 ### Setting the bot up
 
-Download the code folder, run the command `npm install` inside to install all the node-js dependencies; then create a file named 'config.json'. It should look something like this:
-```json
-{
-  "token": "your-token-goes-here"
-}
-```
-Replace the 'your-token-goes-here' with your bot token and then open a command prompt and run `tsc` to transpile the TS code to JS; then run `cd dist` and then `node index`. The bot should start
+Download the code folder, run the command `npm install` inside to install all the node-js dependencies. Then open a command prompt and run `tsc` to transpile the TS code to JS; then run `cd dist` and then `node index`. The bot should start and if the config file doesn't exist, it will be created and you'll be asked to input a token.

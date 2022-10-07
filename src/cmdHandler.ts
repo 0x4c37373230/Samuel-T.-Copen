@@ -9,6 +9,7 @@ import {listServers} from "./functions/list";
 import {osInfo} from "./functions/os";
 import {updateDB} from "./functions/update";
 import {removeServer} from "./functions/remove";
+import {adminManager} from "./functions/admins";
 
 /**
  *
@@ -56,6 +57,12 @@ export function cmdHandler(commandPrefix: string, msg: Message, command: string,
             break;
         case "remove":
             removeServer(msg, args[0]);
+            break;
+        case "admins":
+            if (args[0] === "add" || args[0] === "remove")
+                adminManager(msg, args[0], args[1]);
+            else
+                msg.channel.send("No such criteria exists")
             break;
         default:
             msg.channel.send("No command specified, or command given doesn't exist.");

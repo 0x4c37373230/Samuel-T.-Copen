@@ -27,16 +27,19 @@ function getAllPlayers(serverDB: {serverList:[ServerInfo]}): number
 
     for (let i = 0; i < amount; i++)
     {
-        let ip = serverDB.serverList[i].server.ip;
-        let port = serverDB.serverList[i].server.port;
+        let ip = serverDB.serverList[i]?.server.ip;
+        let port = serverDB.serverList[i]?.server.port;
 
-        mcpeping(ip, port, function (err: any, data: any)
+        if (typeof ip !== "undefined" && typeof port !== "undefined")
         {
-            if (!err)
+            mcpeping(ip, port, (err: any, data: any) =>
             {
-                players += data.currentPlayers;
-            }
-        }, 1000);
+                if (!err)
+                {
+                    players += data.currentPlayers;
+                }
+            }, 1000);
+        }
     }
     return players;
 }
@@ -54,16 +57,19 @@ function pingAll(serverDB: {serverList:[ServerInfo]}): number
 
     for (let i = 0; i < amount; i++)
     {
-        let ip = serverDB.serverList[i].server.ip;
-        let port = serverDB.serverList[i].server.port;
+        let ip = serverDB.serverList[i]?.server.ip;
+        let port = serverDB.serverList[i]?.server.port;
 
-        mcpeping(ip, port, function (err: any)
+        if (typeof ip !== "undefined" && typeof port !== "undefined")
         {
-            if (!err)
+            mcpeping(ip, port, (err: any) =>
             {
-                ++onlineServers;
-            }
-        }, 1000);
+                if (!err)
+                {
+                    ++onlineServers;
+                }
+            }, 1000);
+        }
 
     }
     return onlineServers;
@@ -75,7 +81,7 @@ function pingAll(serverDB: {serverList:[ServerInfo]}): number
  */
 export function status(msg: Message)
 {
-    fs.readFile('serverDB.json', 'utf8', function read(err, fileData)
+    fs.readFile('serverDB.json', 'utf8', (err, fileData) =>
     {
         if (!err)
         {

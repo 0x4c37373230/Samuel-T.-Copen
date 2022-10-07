@@ -12,7 +12,7 @@ export function sort(msg: Message, conditionType: "name" | "version", conditionV
 {
     // FIXME: The name searching doesn't work
 
-    fs.readFile('serverDB.json', 'utf8', function read(err, fileData)
+    fs.readFile('serverDB.json', 'utf8', (err, fileData) =>
     {
         if (!err)
         {
