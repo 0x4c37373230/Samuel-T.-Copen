@@ -20,9 +20,7 @@ client.on("message", (msg: Discord.Message) =>
     const command = args.shift()!.toLowerCase();
 
     if (msg.content.startsWith(commandPrefix) && !msg.author.bot)
-    {
         cmdHandler(commandPrefix, msg, command, args);
-    }
 });
 
 function main() {
@@ -36,13 +34,13 @@ function main() {
                 fs.writeFileSync("./config.json", `{\n\t"token": "${token}",\n\n\t"admins": [\n\t\t"${userID}"\n\t]\n}`);
             });
 
-            finalToken = token
+            finalToken = token;
         });
     }
     else
     {
-        const config = require("../config.json");
-        finalToken = config.token
+        const config = require("./config.json");
+        finalToken = config.token;
     }
 
     if (finalToken !== "")
@@ -51,4 +49,4 @@ function main() {
         console.log("No token was provided");
 }
 
-main()
+main();

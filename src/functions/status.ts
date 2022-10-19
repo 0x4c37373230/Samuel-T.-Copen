@@ -35,9 +35,7 @@ function getAllPlayers(serverDB: {serverList:[ServerInfo]}): number
             mcpeping(ip, port, (err: any, data: any) =>
             {
                 if (!err)
-                {
                     players += data.currentPlayers;
-                }
             }, 1000);
         }
     }
@@ -52,7 +50,7 @@ function pingAll(serverDB: {serverList:[ServerInfo]}): number
 {
     // FIXME: This doesn't work properly yet. I know why (I think I do at least) but it's hard to explain
 
-    let amount = Object.keys(serverDB.serverList).length
+    let amount = Object.keys(serverDB.serverList).length;
     let onlineServers = 0;
 
     for (let i = 0; i < amount; i++)
@@ -65,9 +63,7 @@ function pingAll(serverDB: {serverList:[ServerInfo]}): number
             mcpeping(ip, port, (err: any) =>
             {
                 if (!err)
-                {
                     ++onlineServers;
-                }
             }, 1000);
         }
 
@@ -88,14 +84,14 @@ export function status(msg: Message)
             msg.channel.send("Just a moment. Please stand by...");
 
             let database = JSON.parse(fileData);
-            let serverAmount = Object.keys(database.serverList).length
+            let serverAmount = Object.keys(database.serverList).length;
 
              let statusEmbed = new MessageEmbed()
                 .setTitle("Sam T. Copen Status")
                 .setColor("#FF0000")
                 .addField("Total servers", `${serverAmount}`, false)
                 .addField("Online servers", pingAll(database), true)
-                .addField("Online players", getAllPlayers(database), true)
+                .addField("Online players", getAllPlayers(database), true);
 
             msg.channel.send(statusEmbed);
         }

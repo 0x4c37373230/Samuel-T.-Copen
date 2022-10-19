@@ -15,13 +15,13 @@ export function updateDB(msg: Message) {
     fs.readFile("serverDB.json", "utf-8", (err, fileData) =>
     {
         if (!adminCheck(msg.member?.id, config.admins))
-            msg.channel.send("You are not listed as an admin in the config file, therefore, you cannot run this command (get fucked lmao)")
+            msg.channel.send("You are not listed as an admin in the config file, therefore, you cannot run this command (get fucked lmao)");
         else
         {
             let database = JSON.parse(fileData);
             let amount = Object.keys(database.serverList).length;
 
-            msg.channel.send(`There are ${amount} servers listed in the database. After all of them have been checked, please run the \`remove\` command with no parameters so that the database can actually be updated`)
+            msg.channel.send(`There are ${amount} servers listed in the database. After all of them have been checked, please run the \`remove\` command with no parameters so that the database can actually be updated`);
 
             for (let i = 0; i < amount; i++)
             {

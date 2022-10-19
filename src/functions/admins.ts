@@ -57,7 +57,7 @@ export function adminManager(msg: Message, instruction: "add" | "remove", id: st
                     }
             }
 
-            fs.writeFileSync("../config.json", JSON.stringify(config))
+            fs.writeFileSync("../config.json", JSON.stringify(config));
             msg.channel.send("Changes executed successfully");
         }
     });

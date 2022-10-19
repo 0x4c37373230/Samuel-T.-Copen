@@ -20,12 +20,12 @@ export function listServers(msg: Message)
                 let serverName = database.serverList[i]?.server.name;
 
                 if (typeof serverName !== "undefined")
-                    serverList = serverList.concat(`\n+ ${serverName}`)
+                    serverList = serverList.concat(`\n+ ${serverName}`);
             }
 
             let listEmbed = new MessageEmbed()
                 .setTitle("Servers")
-                .addField("List", `${serverList}\n\`\`\``, false)
+                .addField("List", `${serverList}\n\`\`\``, false);
 
             msg.channel.send(listEmbed);
         }

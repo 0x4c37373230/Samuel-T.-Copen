@@ -21,7 +21,7 @@ export function sort(msg: Message, conditionType: "name" | "version", conditionV
 
             let matchEmbed = new MessageEmbed()
                 .setTitle("Matches")
-                .setColor("#FF00FF")
+                .setColor("#FF00FF");
 
             switch (conditionType)
             {
@@ -31,7 +31,7 @@ export function sort(msg: Message, conditionType: "name" | "version", conditionV
                         let serverName = database.serverList[i].server.name;
 
                         if (serverName.search(conditionValue))
-                            matchEmbed.addField(`${serverName}-`, `${database.serverList[i].server.ip} : ${database.serverList[i].server.port}`, false)
+                            matchEmbed.addField(`${serverName}-`, `${database.serverList[i].server.ip} : ${database.serverList[i].server.port}`, false);
                     }
                     break;
                 default:
@@ -40,7 +40,7 @@ export function sort(msg: Message, conditionType: "name" | "version", conditionV
                         let serverVersion = database.serverList[i].server.version;
 
                         if (serverVersion === conditionValue)
-                            matchEmbed.addField(`${database.serverList[i].server.name}`, `${database.serverList[i].server.ip} : ${database.serverList[i].server.port}`, false)
+                            matchEmbed.addField(`${database.serverList[i].server.name}`, `${database.serverList[i].server.ip} : ${database.serverList[i].server.port}`, false);
                     }
             }
 

@@ -33,17 +33,17 @@ export class ipGenerator
      */
     static generator(mode: "r" | "s", newIP?: string): string
     {
-        this.assignIp(mode, newIP)
+        this.assignIp(mode, newIP);
 
         while (!this.goodIp)
         {
             if (!isReservedIP(ipGenerator.ip))
                 this.goodIp = true;
             else
-                this.assignIp(mode, newIP)
+                this.assignIp(mode, newIP);
         }
 
-        return ipGenerator.ip
+        return ipGenerator.ip;
     }
 }
 
@@ -52,7 +52,7 @@ export class portGenerator
     // TODO:
     //  Check for reserved ports
 
-    static port = 1024
+    static port = 1024;
     static portGen = portGen();
 
     /**
@@ -77,7 +77,7 @@ export class portGenerator
                     this.port = 19132;
         }
 
-        return this.port
+        return this.port;
     }
 }
 

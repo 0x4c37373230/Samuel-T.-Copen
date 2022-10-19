@@ -15,7 +15,7 @@ export function osInfo(msg: Message)
             .addField("Platform", `${osu.os.platform()}`, false)
             .addField("CPU Model", `${osu.cpu.model()}`, false)
             .addField("CPU Count", `${osu.cpu.count()}`, true)
-            .addField("CPU Usage (%)", `${cpuPercentage}%`, true)
+            .addField("CPU Usage (%)", `${cpuPercentage}%`, true);
 
         msg.channel.send(osEmbed);
     })
