@@ -39,7 +39,7 @@ function main() {
     }
     else
     {
-        const config = require("./config.json");
+        const config = require("../config.json");
         finalToken = config.token;
     }
 

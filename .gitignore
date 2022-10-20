@@ -1,6 +1,7 @@
 # My shit
 config.json
 package-lock.json
+dist/
 
 # Logs
 logs
